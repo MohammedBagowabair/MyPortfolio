@@ -1,0 +1,27 @@
+﻿@inherits LayoutComponentBase
+
+<HeadContent>
+    <RadzenTheme Theme="material" />
+</HeadContent>
+<RadzenComponents />
+
+
+    <Header />
+ @Body
+    <Footer />
+
+<style>
+    .page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .main {
+        flex: 1; 
+    }
+
+    .content {
+        padding: 2rem;
+    }
+</style>

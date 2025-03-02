@@ -1,0 +1,1036 @@
+﻿@page "/"
+<style>
+    /* Projects Section Styles */
+#projects {
+    padding: 40px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+#projects h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#projects p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.project {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.project:hover img {
+    transform: scale(1.05);
+}
+
+.project h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #0078d4;
+}
+
+.project p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.project .project-link {
+    display: inline-block;
+    background-color: #0078d4;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.project .project-link:hover {
+    background-color: #005fa3;
+}
+
+
+
+
+    /* Skills Section Styles */
+#skills {
+    padding: 40px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+#skills h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#skills p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.skills-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 100%;
+}
+
+.skills-section h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #0078d4;
+}
+
+.skill {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.skill:hover {
+    background-color: #0078d4;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+
+
+
+
+
+
+    /* Social Links Styles */
+    .social-links {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-icon img {
+        width: 40px; /* Smaller size */
+        height: 40px; /* Same as width to maintain the circle shape */
+        border-radius: 50%; /* Make the icons circular */
+        object-fit: cover; /* Ensure the image fits the circle */
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+        /* Hover Effect */
+        .social-icon img:hover {
+            transform: scale(1.1); /* Slight zoom effect on hover */
+        }
+
+
+
+
+    /* Style the social links section */
+    .social-links {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 100;
+    }
+
+    /* Style each individual social icon link */
+    .social-icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+    }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Optional: Hover effect to change the color of icons */
+        .social-icon:hover img {
+            opacity: 0.8;
+        }
+
+
+
+
+
+    /* Global Styles */
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #fff;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Section Styling */
+    .section {
+        padding: 4rem 2rem;
+        background-color: #f9f9f9;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Header & Titles */
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-family: 'Segoe UI', sans-serif;
+        color: #333;
+        text-align: center;
+    }
+
+    p {
+        font-family: 'Segoe UI', sans-serif;
+        color: #555;
+        font-size: 1rem;
+        text-align: center;
+        line-height: 1.6;
+    }
+
+    /* About Me Section Styling */
+    .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    /* Profile Section Styling */
+    .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        margin: 0 auto;
+    }
+
+    /* Profile Image Styling */
+    .profile-image {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 4px solid var(--rz-primary-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Name Styling with Gradient Text */
+    .name-text {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+        background: linear-gradient(45deg, #3498db, #9b59b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 3s infinite alternate;
+    }
+
+    /* Title Styling */
+    .title-text {
+        font-size: 1.5rem;
+        color: #7f8c8d;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        animation: fade-in 2s ease-in-out infinite alternate;
+    }
+
+
+
+    /* Grid Layouts for Skills, Projects, and Services */
+    .skills-grid, .projects-grid, .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .skill, .project, .service {
+        background-color: #f9f9f9;
+        padding: 1rem;
+        border-radius: 4px;
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Button Style */
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    /* Form Styling */
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    input, textarea {
+        padding: 0.5rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+    }
+
+    textarea {
+        resize: vertical;
+    }
+
+    /* Floating Button Style */
+    .floating-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        font-size: 24px;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .floating-button:hover {
+        background-color: #0056b3;
+    }
+
+  
+</style>
+
+<RadzenStack AlignItems="AlignItems.Center" class="rz-mx-auto rz-my-12 rz-text-center">
+    <!-- Profile Image with Hover Effect and Dark Gray Border -->
+    <RadzenImage Path="images/profile/myProfileImage.png" AlternateText="My Image"
+                 class="profile-image hover-effect" style="border: 4px solid #3a3a3a; box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);" />
+
+    <!-- Name with Gradient Text -->
+    <span class="name-text">MR BAGOWABAIR</span>
+
+    <!-- Title with Animation -->
+    <span class="title-text">Software Engineer</span>
+</RadzenStack>
+
+<style>
+    .profile-image {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 4px solid #3a3a3a; /* Dark Gray Border */
+        box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3); /* Soft shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-image:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+        box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5); /* Stronger shadow on hover */
+    }
+
+    .name-text {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+        background: linear-gradient(45deg, #6C63FF, #FF6584);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 3s infinite alternate;
+    }
+
+   
+
+    .title-text {
+        font-size: 1.5rem;
+        color: #7f8c8d;
+        margin-top: 0.5rem;
+        font-weight: 500;
+        animation: fade-in 2s ease-in-out infinite alternate;
+    }
+
+  
+</style>
+
+
+
+
+<!-- About Me Section -->
+<section id="about-me" class="section" style="background-color: #f4f6f9; padding: 3rem 0;">
+    <div class="about-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <h2 style="font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 1.5rem;">About Me</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; color: #555;">
+            Results-driven Software Engineer with 1+ years of experience in designing, developing, and deploying scalable web
+            applications using .NET Core, Blazor, and MudBlazor. Skilled in API development and database optimization. Passionate
+            about writing clean, efficient, and maintainable code, with a strong focus on cloud-based solutions and user-friendly
+            interfaces.
+        </p>
+    </div>
+</section>
+
+
+<!-- Social Links (Fixed on the left) -->
+<div class="social-links">
+    <a href="https://www.linkedin.com/in/mohammed-bagowabair-77a0a72aa/" target="_blank" class="social-icon">
+        <img src="images/socialmedia/logo-linkedin-icon-4096.png" alt="LinkedIn">
+    </a>
+    <a href="https://github.com/MohammedBagowabair" target="_blank" class="social-icon">
+        <img src="images/socialmedia/github_logo.png" alt="GitHub">
+    </a>
+</div>
+
+<style>
+    /* Social Links Styles */
+    .social-links {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 100;
+    }
+
+    .social-icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: white; /* White Background */
+        border-radius: 50%;
+        padding: 8px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+    }
+
+        .social-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+</style>
+
+
+<!-- Skills Section -->
+<section id="skills" class="section">
+  
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <!-- Backend Development -->
+        <div class="skills-section">
+            <div class="skills-header">
+                <i class="fas fa-server skills-icon"></i>
+                <h3>Backend Development</h3>
+            </div>
+            <div class="skill">.NET Core & ASP.NET Core</div>
+            <div class="skill">C# & Object-Oriented Programming (OOP)</div>
+            <div class="skill">API Development (RESTful APIs)</div>
+            <div class="skill">Entity Framework Core</div>
+            <div class="skill">Microservices Architecture</div>
+            <div class="skill">SQL Server & MySQL</div>
+        </div>
+
+        <!-- Frontend Development -->
+        <div class="skills-section">
+            <div class="skills-header">
+                <i class="fas fa-code skills-icon"></i>
+                <h3>Frontend Development</h3>
+            </div>
+            <div class="skill">Blazor & WebAssembly</div>
+            <div class="skill">Frontend Development (HTML5, CSS3, JavaScript)</div>
+            <div class="skill">Responsive Web Design</div>
+            <div class="skill">JavaScript Frameworks (jQuery)</div>
+        </div>
+
+        <!-- Cloud & Architecture -->
+        <div class="skills-section">
+            <div class="skills-header">
+                <i class="fas fa-cloud skills-icon"></i>
+                <h3>Cloud & Architecture</h3>
+            </div>
+            <div class="skill">Cloud Computing (Microsoft Azure)</div>
+            <div class="skill">API Gateway Implementation</div>
+            <div class="skill">Database Design & Modeling</div>
+            <div class="skill">Performance Profiling & Indexing</div>
+        </div>
+
+        <!-- Development Practices -->
+        <div class="skills-section">
+            <div class="skills-header">
+                <i class="fas fa-cogs skills-icon"></i>
+                <h3>Development Practices</h3>
+            </div>
+            <div class="skill">Version Control (Git & GitHub)</div>
+            <div class="skill">Agile & Scrum Methodologies</div>
+            <div class="skill">Clean Architecture & SOLID Principles</div>
+            <div class="skill">Code Review & Documentation</div>
+            <div class="skill">Problem Solving & Debugging</div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .progress-bar {
+        width: 100%;
+        height: 10px;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .progress {
+        height: 100%;
+        background-color: #6C63FF;
+        border-radius: 5px;
+        transition: width 0.5s ease;
+    }
+
+    /* Skills Section Styles */
+    #skills {
+        padding: 40px;
+        background-color: #ffffff; /* White background */
+        text-align: center;
+    }
+
+        #skills h2 {
+            font-size: 2.5rem;
+            color: #333; /* Dark gray text */
+            margin-bottom: 20px;
+        }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .skills-section {
+        background-color: #f5f5f5; /* Light gray background */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        width: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .skills-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+    .skills-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .skills-icon {
+        font-size: 1.5rem;
+        margin-right: 10px;
+        color: #333; /* Dark gray icon */
+    }
+
+    .skills-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: #333; /* Dark gray text */
+    }
+
+    .skill {
+        background-color: #ffffff; /* White background */
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: #333; /* Dark gray text */
+        margin-bottom: 10px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        border: 1px solid #e0e0e0; /* Light gray border */
+    }
+
+        .skill:hover {
+            background-color: #f0f0f0; /* Slightly darker gray on hover */
+            transform: translateX(5px);
+        }
+</style>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+    <h2>Projects</h2>
+    <p>Here are some of the notable projects I have worked on. These projects showcase my skills in developing scalable and high-performance web applications.</p>
+
+    <div class="projects-grid">
+        <div class="project">
+            <img src="images/projects/bookly/1.png" />
+            <h3>Go Delivery System</h3>
+            <p>An efficient delivery management system that allows real-time tracking of orders and delivery status.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="images/projects/yumblazor/1.png" />
+            <h3>YumBlazor</h3>
+            <p>A food delivery platform built with Blazor, offering a seamless user experience with responsive design.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="images/projects/bulky/1.png" />
+            <h3>Bulky Book</h3>
+            <p>A book store application for managing inventory, allowing users to purchase books online easily.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+
+        <div class="project">
+            <img src="images/projects/bookly/2.png" />
+            <h3>Bookly</h3>
+            <p>An online platform for booking appointments with service providers, featuring a clean UI and backend integration.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="section">
+    <h2>My Services</h2>
+    <div class="services-grid">
+        <div class="service">
+            <div class="service-icon">🛒</div>
+            <h3>E-Commerce Development</h3>
+            <p>Build modern, user-friendly e-commerce platforms with secure payment integration and scalable architectures.</p>
+        </div>
+        <div class="service">
+            <div class="service-icon">💻</div>
+            <h3>Web Application Development</h3>
+            <p>Develop dynamic and scalable web applications with a focus on performance and security.</p>
+        </div>
+        <div class="service">
+            <div class="service-icon">📦</div>
+            <h3>Order Management Systems</h3>
+            <p>Streamline your business processes with custom-built order management solutions tailored to your needs.</p>
+        </div>
+        <div class="service">
+            <div class="service-icon">⚙️</div>
+            <h3>Custom Software Solutions</h3>
+            <p>Develop software tailored to your business needs, optimizing workflows and boosting efficiency.</p>
+        </div>
+        <div class="service">
+            <div class="service-icon">🌐</div>
+            <h3>Personal Portfolio Website</h3>
+            <p>Create a stunning personal portfolio to showcase your skills, projects, and expertise with a unique design.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Add this CSS to style the section -->
+<style>
+    .section {
+        padding: 50px 20px;
+        background-color: #f4f7fc;
+        text-align: center;
+    }
+
+    #services h2 {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+        justify-items: center;
+    }
+
+    .service {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .service-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .service h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .service p {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+</style>
+
+
+@* Education&Certifications
+ *@
+<section id="Education&Certifications" class="section">
+    <div class="container">
+        <h2 class="section-title">🎓 Education & Certifications</h2>
+
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'education')">🎓 Education</button>
+            <button class="tab-link" onclick="openTab(event, 'courses')">📚 Courses</button>
+            <button class="tab-link" onclick="openTab(event, 'certifications')">🏆 Certifications</button>
+        </div>
+
+        <div id="education" class="tab-content active">
+            <div class="card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>B.Sc. in Computer Science</h3>
+                <p>Hadramout University, Yemen</p>
+                <span class="text-muted">High Honors</span>
+            </div>
+        </div>
+
+        <div id="courses" class="tab-content">
+            <div class="card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Clean Architecture Course</h3>
+                <p>[Platform]</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-code"></i>
+                <h3>Entity Framework Core Mastery</h3>
+                <p>[Platform]</p>
+            </div>
+        </div>
+
+        <div id="certifications" class="tab-content">
+            <div class="card">
+                <i class="fas fa-certificate"></i>
+                <h3>Microsoft Certified: Azure Fundamentals</h3>
+                <p>Microsoft</p>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Scrum Master Certification</h3>
+                <p>[Organization]</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .section {
+        padding: 60px 0;
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .tab-link {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .tab-link.active, .tab-link:hover {
+        color: #6C63FF;
+        border-bottom: 2px solid #6C63FF;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+        animation: fadeIn 0.5s;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        margin: 10px auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card i {
+        font-size: 2rem;
+        color: #6C63FF;
+        margin-bottom: 10px;
+    }
+
+    .text-muted {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+   
+</style>
+
+<script>
+    function openTab(event, tabName) {
+        let i, tabContent, tabLinks;
+        
+        tabContent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabContent.length; i++) {
+            tabContent[i].style.display = "none";
+        }
+
+        tabLinks = document.getElementsByClassName("tab-link");
+        for (i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        event.currentTarget.className += " active";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("education").style.display = "block";
+    });
+</script>
+
+ <!-- Resume Section -->
+<section id="resume" class="section">
+    <h2>Resume</h2>
+    <p>Download my resume to learn more about my experience and skills.</p>
+    <a href="pdf/mohammedbagowabair-software engineer.pdf" download class="btn btn-primary bubble-button">Download Resume</a>
+</section>
+
+<style>
+    /* Bubble Button Styling */
+    .bubble-button {
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 30px; /* Rounded edges for bubble effect */
+        background: linear-gradient(45deg, #6C63FF, #FF6584); /* Gradient background */
+        color: white; /* White text */
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3); /* Soft shadow */
+        text-decoration: none; /* Remove underline from link */
+        text-align: center;
+    }
+
+        .bubble-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 70%); /* Bubble effect */
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+            border-radius: 50%;
+        }
+
+        .bubble-button:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.5); /* Stronger shadow on hover */
+        }
+
+        .bubble-button:active::before {
+            transform: translate(-50%, -50%) scale(1); /* Bubble effect on click */
+            opacity: 0;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        .bubble-button:focus {
+            outline: none; /* Remove default focus outline */
+        }
+</style>
+
+
+@* <RadzenButton Icon="arrow_upward" class="floating-button" Click="ScrollToTop" />
+ *@
+
+<RadzenButton Icon="arrow_upward" class="floating-button" Click="ScrollToTop" />
+
+<style>
+    /* Floating Button Styling */
+    .floating-button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 50%; /* Circular button */
+        background: linear-gradient(45deg, #6C63FF, #FF6584); /* Gradient background */
+        color: white; /* White icon */
+        cursor: pointer;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3); /* Soft shadow */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+    .floating-button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 70%); /* Bubble effect */
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.5s ease;
+        border-radius: 50%;
+    }
+
+    .floating-button:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+        box-shadow: 0 8px 15px rgba(108, 99, 255, 0.5); /* Stronger shadow on hover */
+    }
+
+    .floating-button:active::before {
+        transform: translate(-50%, -50%) scale(1); /* Bubble effect on click */
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .floating-button:focus {
+        outline: none; /* Remove default focus outline */
+    }
+
+
+</style>
+
+
+@code {
+    [Inject] private IJSRuntime JS { get; set; }
+
+    // Scroll to the top of the page when button is clicked
+    private async Task ScrollToTop()
+    {
+        await JS.InvokeVoidAsync("window.scrollTo", 0, 0);
+    }
+}
