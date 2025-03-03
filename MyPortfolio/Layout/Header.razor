@@ -1,4 +1,203 @@
-﻿ <div class="header">
+﻿<div class="header">
+    <!-- Logo -->
+    <a href="/">
+        <img src="images/profile/logoface.png" style="max-width: 100px; height: 70px;" />
+    </a>
+
+    <!-- Hamburger Menu for Mobile -->
+    <button class="hamburger" @onclick="ToggleMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Navigation Menu for Web -->
+    <nav class="nav-menu web-nav">
+        <NavLink href="/">About</NavLink>
+        <NavLink href="#skills">Skills</NavLink>
+        <NavLink href="#projects">Projects</NavLink>
+        <NavLink href="#services">Services</NavLink>
+        <NavLink href="#Education&Certifications">Education & Certifications</NavLink>
+        <NavLink href="#resume">Resume</NavLink>
+    </nav>
+
+    <!-- Navigation Menu for Mobile -->
+    <nav class="nav-menu mobile-nav" style="@(isMenuOpen ? "display: flex;" : "display: none;")">
+        <NavLink href="/">About</NavLink>
+        <NavLink href="#skills">Skills</NavLink>
+        <NavLink href="#projects">Projects</NavLink>
+        <NavLink href="#services">Services</NavLink>
+        <NavLink href="#Education&Certifications">Education & Certifications</NavLink>
+        <NavLink href="#resume">Resume</NavLink>
+        <div class="hire-me-button">
+            <RadzenButton Text="Hire me!" class="bubble-button" />
+        </div>
+    </nav>
+
+    <!-- Hire Me Button (visible only on web version) -->
+    <div class="hire-me-button web-only">
+        <RadzenButton Text="Hire me!" class="bubble-button" />
+    </div>
+
+
+<style>
+    /* Hide by default */
+.web-only {
+    display: none;
+}
+
+/* Show only on larger screens (e.g., tablets and desktops) */
+@@media screen and (min-width: 768px) {
+    .web-only {
+        display: block;
+    }
+}
+
+    /* Header Styling */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1.5rem;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        height: 70px;
+    }
+
+    /* Navigation Menu Styling */
+    .nav-menu {
+        display: flex;
+        gap: 1.2rem;
+        align-items: center;
+    }
+
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.3rem 0.8rem;
+            transition: color 0.3s, background-color 0.3s;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+            .nav-menu a:hover {
+                color: #555;
+                background-color: #f0f0f0;
+                border-radius: 4px;
+            }
+
+    /* Hamburger Menu Styling */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            transition: transform 0.3s ease;
+        }
+
+    /* Responsive Styles */
+    @@media (max-width: 768px) {
+        .hamburger {
+            display: flex;
+        }
+
+        .web-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+        }
+
+            .mobile-nav a {
+                padding: 0.8rem 1rem;
+            }
+    }
+
+    @@media (min-width: 769px) {
+        .mobile-nav {
+            display: none;
+        }
+
+        .web-nav {
+            display: flex;
+        }
+    }
+</style>
+</div>
+@code {
+    private bool isMenuOpen = false;
+    private int windowWidth = 0;
+
+    [Inject] private IJSRuntime JSRuntime { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Get initial screen size
+        windowWidth = await JSRuntime.InvokeAsync<int>("getWindowWidth");
+        isMenuOpen = false;
+    }
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("registerResizeCallback", DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public async Task OnResize()
+    {
+        int newWidth = await JSRuntime.InvokeAsync<int>("getWindowWidth");
+
+        if (newWidth > 768 && isMenuOpen)
+        {
+            isMenuOpen = false;
+            StateHasChanged(); // Update UI
+        }
+    }
+}
+
+@* <script>
+    window.getWindowWidth = () => {
+        return window.innerWidth;
+    };
+
+    window.registerResizeCallback = (dotNetHelper) => {
+        window.addEventListener("resize", () => {
+            dotNetHelper.invokeMethodAsync("OnResize");
+        });
+    };
+
+</script> *@
+
+@*  <div class="header">
     <!-- Logo -->
     <a href="/">
         <img src="images/profile/logoface.png" style="max-width: 100px; height: 70px;" />
@@ -209,4 +408,4 @@
     }
 
     private int WindowWidth => (int)JSRuntime.InvokeAsync<double>("eval", "window.innerWidth").Result;
-}  
+}   *@
