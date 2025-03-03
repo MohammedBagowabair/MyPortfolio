@@ -389,7 +389,7 @@
     <span class="name-text">MR BAGOWABAIR</span>
 
     <!-- Title with Animation -->
-    <span class="title-text">Software Engineer</span>
+    <span class="title-text">Software Engineer / .NET Specialist</span>
 </RadzenStack>
 
 <style>
@@ -649,36 +649,152 @@
     <h2>Projects</h2>
     <p>Here are some of the notable projects I have worked on. These projects showcase my skills in developing scalable and high-performance web applications.</p>
 
-    <div class="projects-grid">
+    <!-- Slider Container -->
+    <div class="projects-slider">
         <div class="project">
-            <img src="images/projects/bookly/1.png" />
+            <img src="images/projects/bookly/1.png" alt="Go Delivery System" />
             <h3>Go Delivery System</h3>
             <p>An efficient delivery management system that allows real-time tracking of orders and delivery status.</p>
             <a href="#" class="project-link">View Project</a>
         </div>
 
         <div class="project">
-            <img src="images/projects/yumblazor/1.png" />
+            <img src="images/projects/yumblazor/1.png" alt="YumBlazor" />
             <h3>YumBlazor</h3>
             <p>A food delivery platform built with Blazor, offering a seamless user experience with responsive design.</p>
             <a href="#" class="project-link">View Project</a>
         </div>
 
         <div class="project">
-            <img src="images/projects/bulky/1.png" />
+            <img src="images/projects/bulky/1.png" alt="Bulky Book" />
             <h3>Bulky Book</h3>
             <p>A book store application for managing inventory, allowing users to purchase books online easily.</p>
             <a href="#" class="project-link">View Project</a>
         </div>
 
         <div class="project">
-            <img src="images/projects/bookly/2.png" />
+            <img src="images/projects/bookly/2.png" alt="Bookly" />
             <h3>Bookly</h3>
             <p>An online platform for booking appointments with service providers, featuring a clean UI and backend integration.</p>
             <a href="#" class="project-link">View Project</a>
         </div>
     </div>
 </section>
+<script>
+    $(document).ready(function () {
+        $('.projects-slider').slick({
+            dots: true, // Show dot indicators
+            infinite: true, // Infinite looping
+            speed: 300, // Transition speed
+            slidesToShow: 3, // Number of slides to show at once
+            slidesToScroll: 1, // Number of slides to scroll
+            responsive: [
+                {
+                    breakpoint: 1024, // Adjust for tablets
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600, // Adjust for mobile devices
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
+<style>
+    /* Custom black arrows for Slick Slider */
+    .slick-prev,
+    .slick-next {
+        width: 40px; /* Adjust arrow size */
+        height: 40px; /* Adjust arrow size */
+        z-index: 1; /* Ensure arrows are above the slides */
+    }
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: black; /* Change arrow color to black */
+            font-size: 40px; /* Adjust arrow icon size */
+        }
+
+    .slick-prev {
+        left: -50px; /* Position the previous arrow */
+    }
+
+    .slick-next {
+        right: -50px; /* Position the next arrow */
+    }
+
+    .projects-slider {
+        margin: 20px 60px; /* Add space on the sides for arrows */
+    }
+/* Slider Container */
+.projects-slider {
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+    .slick-prev:before,
+    .slick-next:before {
+        font-family: 'Font Awesome 5 Free'; /* Use FontAwesome */
+        font-weight: 900; /* Required for solid icons */
+        color: black; /* Black color */
+    }
+
+    .slick-prev:before {
+        content: '\f104'; /* FontAwesome left arrow icon */
+    }
+
+    .slick-next:before {
+        content: '\f105'; /* FontAwesome right arrow icon */
+    }
+
+/* Individual Project Styling */
+.project {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    background: #f9f9f9;
+}
+
+.project img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.project h3 {
+    margin: 15px 0 10px;
+    font-size: 1.5em;
+}
+
+.project p {
+    font-size: 1em;
+    color: #555;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.project-link:hover {
+    background: #0056b3;
+}
+</style>
 
 <!-- Services Section -->
 <section id="services" class="section">
