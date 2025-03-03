@@ -7,3 +7,4 @@ window.registerResizeCallback = (dotNetHelper) => {
         dotNetHelper.invokeMethodAsync("OnResize", window.innerWidth);
     });
 };
+
