@@ -873,9 +873,7 @@
         line-height: 1.5;
     }
 </style>
-
-
-<!-- Education&Certifications-->
+ <!-- Education&Certifications-->
 <section id="Education&Certifications" class="section">
     <div class="container">
         <h2 class="section-title">🎓 Education & Certifications</h2>
@@ -892,6 +890,18 @@
                 <h3>B.Sc. in Computer Science</h3>
                 <p>Hadramout University, Yemen</p>
                 <span class="text-muted">High Honors</span>
+                <a href="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5"
+                   class="view-certificate"
+                   data-image="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5.jpg">
+                    View Certificate
+                </a>
+            </div>
+        </div>
+        <!-- Modal Structure -->
+        <div id="certificate-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <img id="modal-image" src="" alt="Certificate Image">
             </div>
         </div>
 
@@ -900,12 +910,49 @@
                 <i class="fas fa-laptop-code"></i>
                 <h3>Clean Architecture Course</h3>
                 <p>Udemy</p>
+                <div class="center-container">
+                    <a href="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5"
+                       class="view-certificate"
+                       data-image="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5.jpg">
+                        View Certificate
+                    </a>
+                </div>
             </div>
-
             <div class="card">
-                <i class="fas fa-code"></i>
-                <h3>Entity Framework Core Mastery</h3>
+                <i class="fas fa-laptop-code"></i>
+                <h3>Clean Architecture Course</h3>
                 <p>Udemy</p>
+                <div class="center-container">
+                    <a href="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5"
+                       class="view-certificate"
+                       data-image="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5.jpg">
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+                 <div class="card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Clean Architecture Course</h3>
+                <p>Udemy</p>
+                <div class="center-container">
+                    <a href="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5"
+                       class="view-certificate"
+                       data-image="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5.jpg">
+                        View Certificate
+                    </a>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Clean Architecture Course</h3>
+                <p>Udemy</p>
+                <div class="center-container">
+                    <a href="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5"
+                       class="view-certificate"
+                       data-image="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5.jpg">
+                        View Certificate
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -914,17 +961,94 @@
                 <i class="fas fa-certificate"></i>
                 <h3>Microsoft Certified: Azure Fundamentals</h3>
                 <p>Microsoft</p>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Scrum Master Certification</h3>
-                <p>[Organization]</p>
+                    <a href="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5"
+                        class="view-certificate"
+                        data-image="images/Courses/UC-f5a42b04-5c04-467f-a3fe-031283c5b2f5.jpg">
+                    View Certificate
+                </a>
             </div>
         </div>
     </div>
 </section>
 <style>
+    .view-certificate {
+        display: inline-block;
+        width: 120px; /* Fixed width */
+        text-align: center; /* Center text inside */
+        padding: 6px 0; /* Adjust padding to maintain height */
+        background-color: #b1a14e; /* Purple color */
+        color: #fff; /* White text */
+        font-size: 14px; /* Smaller font size */
+        text-decoration: none;
+        border-radius: 4px; /* Slightly rounded corners */
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        margin: 0 auto; /* Center using margin */
+        display: block; /* Ensures it works with margin auto */
+    }
+
+        .view-certificate:hover {
+            background-color: #ffffff; /* Darker purple on hover */
+            transform: scale(1.05);
+            color: #b1a14e; /* White text */
+        }
+
+        .view-certificate:active {
+            background-color: #b1a14e; /* Even darker purple on click */
+            transform: scale(0.98);
+        }
+
+    /* If using Flexbox (recommended for centering inside a div) */
+    .center-container {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically (optional) */
+    }
+
+
+
+    /* Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    }
+
+    .modal-content {
+        position: relative;
+        margin: 5% auto; /* Center the modal */
+        padding: 20px;
+        width: 80%;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+    }
+
+        .close-modal:hover {
+            color: #6C63FF;
+        }
+
+    #modal-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
     .section {
         padding: 60px 0;
         background-color: #f8f9fa;
@@ -993,6 +1117,42 @@
 
 </style>
 <script>
+    // Get the modal and modal image elements
+    const modal = document.getElementById("certificate-modal");
+    const modalImage = document.getElementById("modal-image");
+
+    // Get all "View Certificate" links
+    const viewCertificateLinks = document.querySelectorAll(".view-certificate");
+
+    // Function to open the modal
+    function openModal(imageSrc) {
+        modalImage.src = imageSrc; // Set the image source
+        modal.style.display = "block"; // Show the modal
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none"; // Hide the modal
+    }
+
+    // Add click event listeners to all "View Certificate" links
+    viewCertificateLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior
+            const imageSrc = this.getAttribute("data-image"); // Get the image source
+            openModal(imageSrc); // Open the modal with the image
+        });
+    });
+
+    // Close the modal when the close button is clicked
+    document.querySelector(".close-modal").addEventListener("click", closeModal);
+
+    // Close the modal when clicking outside the modal content
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
     function openTab(event, tabName) {
         let i, tabContent, tabLinks;
 
@@ -1014,7 +1174,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("education").style.display = "block";
     });
-</script>
+</script> 
 
 <!-- Resume Section -->
 <section id="resume" class="section">
