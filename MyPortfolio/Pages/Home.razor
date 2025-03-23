@@ -381,7 +381,7 @@
 
 <RadzenStack AlignItems="AlignItems.Center" class="rz-mx-auto rz-my-12 rz-text-center">
     <!-- Profile Image with Hover Effect and Dark Gray Border -->
-    <RadzenImage Path="images/profile/myProfileImage.png" AlternateText="My Image"
+    <RadzenImage Path="images/profile/personal.jpg" AlternateText="My Image"
                  class="profile-image hover-effect" style="border: 4px solid #3a3a3a; box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);" />
 
     <!-- Name with Gradient Text -->
@@ -411,8 +411,8 @@
         font-size: 2rem;
         font-weight: bold;
         margin-top: 1rem;
-        background: linear-gradient(45deg, #6C63FF, #FF6584);
-        -webkit-background-clip: text;
+/*         background: linear-gradient(45deg, #6C63FF, #FF6584);
+ */        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: gradient-shift 3s infinite alternate;
     }
@@ -428,19 +428,71 @@
     }
 
 </style>
+<style>
+    /* Animation for the heading */
+    @@keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
+    /* Animation for the paragraph */
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Apply animations to the heading and paragraph */
+    .animated-heading {
+        animation: fadeInDown 1s ease-out forwards;
+    }
+
+    .animated-paragraph {
+        animation: fadeInUp 1s ease-out 0.5s forwards; /* Delay of 0.5s */
+        opacity: 0; /* Start invisible */
+    }
+</style>
 <!-- About Me Section -->
-<section id="about-me" class="section" style="background-color: #f4f6f9; padding: 3rem 0;">
+<section id="about-me" class="section" style="background-color: #f4f6f9; padding: 4rem 0;">
     <div class="about-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
-        <h2 style="font-size: 2rem; font-weight: bold; color: #333; margin-bottom: 1.5rem;">About Me</h2>
-        <p style="font-size: 1.1rem; line-height: 1.6; color: #555;">
+        <h2 class="animated-heading" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 1.5rem; letter-spacing: 1px; position: relative; display: inline-block;">
+            About Me
+            <span style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: #6C63FF;"></span>
+        </h2>
+        <p class="animated-paragraph" style="font-family: 'Lora', serif; font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 700px; margin: 0 auto;">
+            Results-driven Software Engineer with 1+ years of experience in designing, developing, and deploying scalable web
+            applications using .NET Core, Blazor, and MudBlazor. Skilled in API development and database optimization. Passionate
+            about writing clean, efficient, and maintainable code, with a strong focus on cloud-based solutions and user-friendly
+            interfaces,and more.
+        </p>
+    </div>
+</section>
+@* <!-- About Me Section -->
+<section id="about-me" class="section" style="background-color: #f4f6f9; padding: 4rem 0;">
+    <div class="about-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: #2c3e50; margin-bottom: 1.5rem; letter-spacing: 1px; position: relative; display: inline-block;">
+            About Me
+            <span style="position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: #6C63FF;"></span>
+        </h2>
+        <p style="font-family: 'Lora', serif; font-size: 1.1rem; line-height: 1.8; color: #555; max-width: 700px; margin: 0 auto;">
             Results-driven Software Engineer with 1+ years of experience in designing, developing, and deploying scalable web
             applications using .NET Core, Blazor, and MudBlazor. Skilled in API development and database optimization. Passionate
             about writing clean, efficient, and maintainable code, with a strong focus on cloud-based solutions and user-friendly
             interfaces.
         </p>
     </div>
-</section>
+</section> *@
 
 
 <!-- Social Links (Fixed on the left) -->
@@ -450,6 +502,10 @@
     </a>
     <a href="https://github.com/MohammedBagowabair" target="_blank" class="social-icon">
         <img src="images/socialmedia/github_logo.png" alt="GitHub">
+    </a>
+
+    <a href="https://wa.me/+601164523898" target="_blank" class="social-icon">
+        <img src="images/socialmedia/whatsapp-icon.png" alt="WhatsApp">
     </a>
 </div>
 <style>
@@ -485,8 +541,27 @@
         .social-icon:hover {
             transform: scale(1.1);
         }
-</style>
 
+    :root {
+        --primary-color: #6C63FF; /* Change this to your preferred color */
+    }
+
+    /* Example of changing the primary color in buttons */
+    .btn-primary {
+        background-color: var(--primary-color);
+        border: none;
+        padding: 0.5rem 1.5rem;
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade for hover */
+        }
+</style>
 
 <!-- Skills Section -->
 <section id="skills" class="section">
@@ -505,6 +580,8 @@
             <div class="skill">Entity Framework Core</div>
             <div class="skill">Microservices Architecture</div>
             <div class="skill">SQL Server & MySQL</div>
+            <div class="skill">SQL Server</div>
+
         </div>
 
         <!-- Frontend Development -->
